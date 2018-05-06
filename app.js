@@ -7,13 +7,13 @@ const mongoose = require('mongoose');
 const config = require('./config/database')
 
 
-
+// Database is placed in the config folder
 mongoose.connect(config.database);
 
 
 //Check database connection
 mongoose.connection.on('connected' , ()=> {
-  console.log("Connected to the Database")
+  console.log("We Live Up In This Database")
 })
 
 mongoose.connection.on('error' , (err)=> {
@@ -41,6 +41,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Body Parser Middleware
 app.use(bodyParser.json());
 
+
+//Passport Middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//
+
+require('./config/passport')(passport)
 
 // Users Routes
 app.use('/users' , users)
