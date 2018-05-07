@@ -12,11 +12,11 @@ mongoose.connect(config.database);
 
 
 //Check database connection
-mongoose.connection.on('connected' , ()=> {
+mongoose.connection.on('connected' , () => {
   console.log("We Live Up In This Database")
 })
 
-mongoose.connection.on('error' , (err)=> {
+mongoose.connection.on('error' , (err) => {
   console.log("You got some Database Issues Son! " + err)
 })
 
